@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="holdonbush">
+    <style>
+        td{
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2>码蜂社前端例子</h2>
+    <div>
+        <p>段落1</p>
+        <hr/>
+        <a href="http://www.w3school.com.cn" style="color: black;text-decoration-line: none">>>>前往<span>w3c前端教程</span></a>
+        <img src="icon3.png">
+        <hr/>
+    </div>
+    <div>
+        <input id="show" type="text" style="width: 30%">
+        <table style="width: 30%">
+            <tr>
+                <td onclick="addthis(this)">1</td>
+                <td onclick="addthis(this)">2</td>
+                <td onclick="addthis(this)">3</td>
+            </tr>
+            <tr>
+                <td onclick="addthis(this)">4</td>
+                <td onclick="addthis(this)">5</td>
+                <td onclick="addthis(this)">6</td>
+            </tr>
+            <tr>
+                <td onclick="addthis(this)">7</td>
+                <td onclick="addthis(this)">8</td>
+                <td onclick="addthis(this)">9</td>
+            </tr>
+            <tr>
+                <td onclick="addthis(this)">*</td>
+                <td onclick="addthis(this)">0</td>
+                <td title="退格" onclick="backspace()">&lt;</td>
+            </tr>
+            <tr>
+                <td onclick="addthis(this)">+</td>
+                <td onclick="addthis(this)">-</td>
+                <td onclick="addthis(this)">/</td>
+            </tr>
+            <tr>
+                <td title="清零" onclick="cleardata()">R</td>
+                <td></td>
+                <td title="计算" onclick="calculate()">C</td>
+            </tr>
+        </table>
+    </div>
+    <hr/>
+    <ul>计算结果
+
+    </ul>
+</body>
+<script>
+    var flag = 0;
+    function addthis(t) {
+        if (flag === 0) {
+            document.getElementById("show").value += t.innerText;
+        } else {
+            document.getElementById("show").value = t.innerText;
+            flag = 0
+        }
+    }
+    function calculate() {
+        flag = 1;
+        document.getElementById("show").value =  eval(document.getElementById("show").value);
+        var f = document.createElement("li");
+        f.innerText = document.getElementById("show").value;
+        document.getElementsByTagName("ul")[0].appendChild(f);
+    }
+    function cleardata() {
+        document.getElementById("show").value = "";
+    }
+    function backspace() {
+        document.getElementById("show").value = document.getElementById("show").value.slice(0,-1);
+    }
+</script>
+</html>
