@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+</head>
+<body>
+    <div>
+        <form style="border: 1px solid black;width: 20%;margin-left: 40%">
+            <div style="margin-left: 15%;width: 70%;margin-top: 20px;margin-bottom: 20px">
+                <label for="username" style="display: inline-block;width: 70px">用户名</label>
+                <input id="username" name="username" type="text"/>
+                <br/>
+                <label for="password" style="display:inline-block;width: 70px">密码</label>
+                <input id="password" name="password" type="password"/>
+                <br/>
+
+                <label>
+                    <input name="sex" type="radio" value="man"/>
+                    <span>男</span>
+                </label>
+                <label>
+                    <input name="sex" type="radio" value="female"/>
+                    <span>女</span>
+                </label>
+                <br/>
+
+                <label>
+                    <input name="skill" type="checkbox" value="HTML"/>
+                    <span>HTML</span>
+                </label>
+                <label>
+                    <input name="skill" type="checkbox" value="CSS"/>
+                    <span>CSS</span>
+                </label>
+                <label>
+                    <input name="skill" type="checkbox" value="JavaScript"/>
+                    <span>JavaScript</span>
+                </label>
+                <br/>
+
+                <select id="select">
+                    <option value="" disabled selected>所在城市</option>
+                    <option value="beijing">北京</option>
+                    <option value="shanghai">上海</option>
+                    <option value="shenzhen">深圳</option>
+                </select>
+                <label for="select"></label>
+                <br/>
+                <br/>
+
+                <button type="submit" value="submit">提交</button>
+                <button type="reset" value="reset">重置</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>
