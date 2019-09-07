@@ -37,4 +37,4 @@
 2. 如果需要更改，则对文件内容进行更改。
 3. 左侧菜单中的Sourde Control即是代码版本控制。进入Source Control中可以查看哪些文件有改动。
 4. 在More Action中，选择Stage All Changes。操作后可以查看到已经Staged了的改动。
-5. 选择`√`,commit本机更改，并在提示下，输入本次commit的commit message。然后完成commit操作。
+5. 选择`√`,commit本次更改，并在提示下，输入本次commit的commit message。然后完成commit操作。
