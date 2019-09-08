@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+</head>
+<body>
+    <form id="form1" action="/" method="post" enctype="multipart/form-data">
+        <label for="username" style="display: inline-block;width: 70px">用户名</label>
+        <input id="username" name="username" type="text"/>
+        <br/>
+        <label for="password" style="display:inline-block;width: 70px">密码</label>
+        <input id="password" name="password" type="password"/>
+        <br/>
+
+        <label>
+            <input name="sex" type="radio" value="man"/>
+            <span>男</span>
+        </label>
+        <label>
+            <input name="sex" type="radio" value="female"/>
+            <span>女</span>
+        </label>
+        <br/>
+
+        <label>
+            <input name="skill" type="checkbox" value="HTML"/>
+            <span>HTML</span>
+        </label>
+        <label>
+            <input name="skill" type="checkbox" value="CSS"/>
+            <span>CSS</span>
+        </label>
+        <label>
+            <input name="skill" type="checkbox" value="JavaScript"/>
+            <span>JavaScript</span>
+        </label>
+        <br/>
+
+        <input type="file"/>
+        <br/>
+
+        <label>
+            <input type="number"/>
+            <span>请输入电话号码</span>
+            <br/>
+        </label>
+        <label>
+            <input type="email"/>
+            <span>请输入邮箱</span>
+            <br/>
+        </label>
+        <label>
+            <input type="url"/>
+            <span>请输入一个网址</span>
+            <br/>
+        </label>
+        <label>
+            <input type="color"/>
+            <span>请选择一个颜色</span>
+            <br/>
+        </label>
+        <label>
+            <input type="number" min="10" max="50"/>
+            <span>选择或输入一个数字</span>
+            <br/>
+        </label>
+        <label>
+            <input id="range" type="range" min="10" max="50" step="2" onchange="document.getElementById('show').innerText=value"/>
+            <span id="show"></span>
+            <span>选择一个数字</span>
+            <br/>
+        </label>
+        <label>
+            <input type="search" />
+            <span>输入搜索内容</span>
+            <br/>
+        </label>
+        <label>
+            <input type="datetime-local"/>
+            <span>完整日期</span>
+            <br/>
+        </label>
+        <label>
+            <input type="date"/>
+            <span>日期</span>
+            <br/>
+        </label>
+        <label>
+            <input type="week"/>
+            <span>周数</span>
+            <br/>
+        </label>
+        <label>
+            <input type="month"/>
+            <span>月数</span>
+            <br/>
+        </label>
+        <label>
+            <input type="time"/>
+            <span>时间</span>
+            <br/>
+        </label>
+        <label>
+            <input type="hidden"/>
+        </label>
+        <label>
+            <input type="image" src="Celeste%202019_1_16%2014_29_00.png" width="50px"/>
+            <span>提交按钮</span>
+            <br/>
+        </label>
+        <label>
+            <input type="submit" value="submit"/>
+            <span>提交按钮</span>
+        </label>
+        <label>
+            <input type="button" value="button"/>
+            <span>按钮</span>
+        </label>
+        <label>
+            <input type="reset" value="reset"/>
+            <span>重置</span>
+        </label>
+    </form>
+</body>
+<script>
+    document.getElementById("show").innerText = document.getElementById("range").value
+</script>
+</html>

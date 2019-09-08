@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+</head>
+<body>
+    <form id="form2" action="/" method="post" enctype="multipart/form-data">
+        <label for="email">邮箱</label>
+        <input id="email" type="email" name="email" pattern="^\w+((.\w+)|(-\w+))@[A-Za-z0-9]+((.|-)[A-Za-z0-9]+).[A-Za-z0-9]+$" required/>
+        <br/>
+
+        <label for="number">数字</label>
+        <input id="number" type="number" name="number" step="2" pattern="^\d*[02468]$"/>
+        <br/>
+
+        <label for="list">城市</label>
+        <input id="list" list="city"/>
+        <datalist id="city">
+            <option value="北京">北京</option>
+            <option value="上海">上海</option>
+            <option value="广州">广州</option>
+            <option value="深圳">深圳</option>
+        </datalist>
+        <br/>
+
+        <button type="submit">提交</button>
+    </form>
+</body>
+</html>
