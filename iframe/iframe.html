@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            height: 50px;
+            text-align: center;
+            background-color: white;
+            line-height: 50px;
+        }
+        .active{
+            background-color: lightgray;
+        }
+        a{
+            display: inline-block;
+            height: 50px;
+            width: 100%;
+            color: black;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div style="width: 10%;position: absolute;height: 100%;border-right: 1px solid black">
+        <ul style="list-style-type: none">
+            <li onmouseover="change(this)" onmouseout="resetcolor(this)" class="active"><a href="page1.html" target="iframe1">page1</a></li>
+            <li onmouseover="change(this)" onmouseout="resetcolor(this)"><a href="page2.html" target="iframe1">page2</a></li>
+            <li onmouseover="change(this)" onmouseout="resetcolor(this)"><a href="page3.html" target="iframe1">page3</a></li>
+            <li onmouseover="change(this)" onmouseout="resetcolor(this)"><a href="page4.html" target="iframe1">page4</a></li>
+        </ul>
+    </div>
+    <iframe name="iframe1" frameborder="0" src="page1.html" style="position: absolute;width: 90%;margin-left: 10%;height: 100%">
+    </iframe>
+
+
+</body>
+<script>
+    function change(t) {
+        t.style.backgroundColor = "lightgray"
+    }
+
+    function resetcolor(t) {
+        t.style.backgroundColor = ""
+    }
+
+    for (let i = 0; i < 4; i++) {
+        let obj =  document.getElementsByTagName("li")[i]
+        obj.onclick = function () {
+            document.getElementsByClassName("active")[0].classList.remove("active")
+            obj.classList.add("active")
+        }
+    }
+
+
+</script>
+</html>
