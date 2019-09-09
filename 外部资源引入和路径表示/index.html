@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+    <div>
+        <input id="show" type="text" style="width: 30%">
+        <table style="width: 30%">
+            <tr>
+                <td onclick="addthis(this)">1</td>
+                <td onclick="addthis(this)">2</td>
+                <td onclick="addthis(this)">3</td>
+            </tr>
+            <tr>
+                <td onclick="addthis(this)">4</td>
+                <td onclick="addthis(this)">5</td>
+                <td onclick="addthis(this)">6</td>
+            </tr>
+            <tr>
+                <td onclick="addthis(this)">7</td>
+                <td onclick="addthis(this)">8</td>
+                <td onclick="addthis(this)">9</td>
+            </tr>
+            <tr>
+                <td onclick="addthis(this)">*</td>
+                <td onclick="addthis(this)">0</td>
+                <td title="退格" onclick="backspace()">&lt;</td>
+            </tr>
+            <tr>
+                <td onclick="addthis(this)">+</td>
+                <td onclick="addthis(this)">-</td>
+                <td onclick="addthis(this)">/</td>
+            </tr>
+            <tr>
+                <td title="清零" onclick="cleardata()">R</td>
+                <td></td>
+                <td title="计算" onclick="calculate()">C</td>
+            </tr>
+        </table>
+    </div>
+</body>
+<script src="main.js"></script>
+</html>
