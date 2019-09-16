@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+    <style>
+        #container{
+            display: flex;
+            justify-content: space-between;
+        }
+        #header{
+            background-color: lightgray;
+            text-align: center;
+        }
+        #footer{
+            background-color: lightgray;
+            text-align: center;
+        }
+        #center{
+            order: 0;
+            flex-grow: 1;
+            text-align: center;
+            background-color: darkcyan;
+        }
+        #left{
+            order: -1;
+            text-align: center;
+            background-color: deepskyblue;
+            flex-basis: 200px;
+        }
+        #right{
+            order: 1;
+            text-align: center;
+            background-color: deepskyblue;
+            flex-basis: 200px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="header">头部</div>
+        <div id="container">
+            <div id="center">主内容栏自适应宽度</div>
+            <div id="left">侧边栏1固定宽度</div>
+            <div id="right">侧边栏2固定宽度</div>
+        </div>
+        <div id="footer">底部</div>
+    </div>
+</body>
+</html>
