@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+    <style>
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+
+        [class*="col-"]{
+            background-color: #f4645f;
+            color: white;
+            border: 1px solid black;
+            text-align: center;
+        }
+
+        .floatpart {
+            overflow: hidden;
+            margin-bottom: 50px;
+        }
+        .floatpart [class*="col-"]{
+            float: left;
+        }
+
+        .flexpart{
+            display: flex;
+            flex-flow: row wrap;
+        }
+        @media only screen and (max-width: 768px) {
+            .floatpart [class*="col-"]{
+                width: 100%;
+            }
+            .flexpart [class*="col-"]{
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <p>float</p>
+    <div class="floatpart">
+        <div class="col-1"><p>1</p></div>
+        <div class="col-2"><p>2</p></div>
+        <div class="col-3"><p>3</p></div>
+        <div class="col-4"><p>4</p></div>
+        <div class="col-5"><p>5</p></div>
+        <div class="col-6"><p>6</p></div>
+        <div class="col-7"><p>7</p></div>
+        <div class="col-8"><p>8</p></div>
+        <div class="col-9"><p>9</p></div>
+        <div class="col-10"><p>10</p></div>
+        <div class="col-11"><p>11</p></div>
+        <div class="col-12"><p>12</p></div>
+    </div>
+
+    <p>flex</p>
+    <div class="flexpart">
+        <div class="col-1"><p>1</p></div>
+        <div class="col-2"><p>2</p></div>
+        <div class="col-3"><p>3</p></div>
+        <div class="col-4"><p>4</p></div>
+        <div class="col-5"><p>5</p></div>
+        <div class="col-6"><p>6</p></div>
+        <div class="col-7"><p>7</p></div>
+        <div class="col-8"><p>8</p></div>
+        <div class="col-9"><p>9</p></div>
+        <div class="col-10"><p>10</p></div>
+        <div class="col-11"><p>11</p></div>
+        <div class="col-12"><p>12</p></div>
+    </div>
+</body>
+</html>

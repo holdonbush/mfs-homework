@@ -1,0 +1,318 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    color: #959595;
+    text-decoration-line: none;
+}
+
+@font-face {
+    font-family: 'iconfont';  /* project id 603550 */
+    src: url('//at.alicdn.com/t/font_603550_g78nd6iijce.eot');
+    src: url('//at.alicdn.com/t/font_603550_g78nd6iijce.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_603550_g78nd6iijce.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_603550_g78nd6iijce.woff') format('woff'),
+    url('//at.alicdn.com/t/font_603550_g78nd6iijce.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_603550_g78nd6iijce.svg#iconfont') format('svg');
+}
+
+.black{
+    color:black;
+}
+
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:12px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;
+}
+header {
+    background-image: url('../img/header-bg.jpg');
+    padding-top: 62px;
+    padding-bottom: 62px;
+}
+
+.pointer{
+    cursor: pointer;
+}
+
+.bolder {
+    font-weight: bold;
+}
+
+#container-header {
+    margin: 10px 0;
+    color: white;
+}
+
+.logo {
+    display: block;
+    height: 7.5rem;
+    margin: 0 auto 48px auto;
+}
+
+.slogan {
+    text-align: center;
+    font-weight: 400;
+    font-size: 30px;
+}
+
+nav {
+    height: 3rem;
+    padding-bottom: 35px;
+    background-color: #e1e1e1;
+}
+
+nav ul {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    list-style-type: none;
+    margin: 0 auto;
+    background-color: white;
+}
+
+nav ul li {
+    line-height: 3rem;
+    padding: 0 21px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+nav ul li:hover a{
+    color: #f4645f;
+}
+
+#container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    background-color: #e1e1e1;
+}
+
+.author{
+    color: #f4645f;
+}
+
+.content-left,.content-right{
+    padding: 0 15px;
+}
+
+.content-left{
+    width: 650px;
+}
+.content-right{
+    width: 350px;
+    margin-bottom: 35px;
+}
+.content-left .content-left-footer{
+    display: flex;
+    margin-bottom: 35px;
+    height: 2.25rem;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.content-left .content-left-footer span{
+    background-color: #f4645f;
+    line-height: 2.25rem;
+    font-size: 14px;
+    padding: 0 14px;
+    margin: 0 3px;
+    color: white;
+    border: 1px solid #f4645f;
+    border-radius: 2px;
+}
+.content-left .content-left-footer a{
+    background-color: #f4645f;
+    color: white;
+    width: 36px;
+    text-align: center;
+    line-height: 2.25rem;
+    border: 1px solid #f4645f;
+    border-radius: 2px;
+}
+.card{
+    padding: 35px;
+    background-color: white;
+    margin-bottom: 35px;
+}
+.card h1{
+    font-weight: 400;
+    text-align: center;
+}
+.card p:first-of-type{
+    text-align: center;
+    margin-top: 14px;
+    font-size: 14px;
+    color: #959595;
+}
+.card .pic{
+    margin-top: 30px;
+}
+
+.card .content{
+    margin: 30px 0;
+}
+.card .link{
+    height: 2.25rem;
+    line-height: 2.25rem;
+}
+.card .link a:hover{
+    background-color: #303030;
+    transition: all .2s;
+    border: 1px solid #303030;
+}
+.card .footer{
+    margin-top: 30px;
+    padding-bottom: 21px;
+}
+.card div p:only-child{
+    text-align: left;
+    font-weight: 400;
+    font-size: 18px;
+}
+
+.card div a:only-child{
+    padding: 7px 14px;
+    color: white;
+    background-color: rgb(244,100,95);
+    border: 1px solid rgb(244,100,95);
+    border-radius: 2px;
+}
+
+
+.card div p:only-child a{
+    color: #f4645f;
+    padding: 0;
+    background-color: white;
+    border: none;
+}
+
+
+.doc{
+    padding: 21px 30px;
+    background-color: white;
+}
+
+.doc .title-doc{
+    margin-bottom: 16px;
+}
+
+.doc .title-doc p{
+    font-weight: 400;
+    font-size: 21px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid lightgray;
+}
+
+.doc .doclist a{
+    display: block;
+    text-align: center;
+    background-color: #f4645f;
+    padding: 7px 14px;
+    margin-top: 5px;
+    color: white;
+    cursor: pointer;
+    border:1px solid #f4645f;
+    border-radius: 2px;
+}
+
+.doc .doclist a:hover{
+    background-color: #303030;
+    border: 1px solid #303030;
+    transition: all .2s;
+}
+
+.body-footer{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    padding-top: 35px;
+    background-color: #202020;
+    color: white;
+    padding-bottom: 35px;
+}
+
+.body-footer .footerformat1{
+    padding: 0 14px;
+    width: 300px;
+}
+
+.body-footer .footerformat1 h4{
+    padding-bottom: 7px;
+    margin-bottom: 21px;
+    border-bottom: 1px solid lightgray;
+    color: #fff;
+    font-size: 21px;
+    font-weight: 400;
+}
+
+.body-footer .footerformat1 .field {
+    padding-bottom:14px;
+    margin-bottom: 14px;
+    border-bottom: 1px dotted #959595;
+    font-size: 14px;
+    color: #959595;
+}
+.field a:hover{
+    color: #f4645f;
+}
+
+.body-footer .footerformat1 .field3{
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.body-footer .footerformat1 .field3 a{
+    padding: 2px 7px;
+    margin: 0 7px 7px 0;
+    color: #959595;
+}
+.body-footer .footerformat1 .field4{
+    display: flex;
+    flex-flow: row wrap;
+    color: #959595;
+}
+.body-footer .footerformat1 .field4 a{
+    padding: 2px 7px;
+    margin: 0 7px 7px 0;
+    color: #959595;
+}
+
+.copyright p{
+    text-align: center;
+    padding: 28px 0;
+    background-color: #111;
+    color: #555555;
+    font-size: 13px;
+}
+
+.labels:hover{
+    background-color: #f4645f;
+    transition: all .2s;
+    cursor: pointer;
+}
+
+.floater{
+    display: inline-block;
+    position: fixed;
+    right: 5px;
+    bottom: 15px;
+}
+.floatericon{
+    background-color: #f4645f;
+    font-size: 16px;
+    color: white;
+    padding: 7px;
+    cursor: pointer;
+    border: 1px solid #f4645f;
+    border-radius: 2px;
+    opacity: .7;
+}
+.floatericon:hover{
+    opacity:1;
+    transition: all .2s;
+}
