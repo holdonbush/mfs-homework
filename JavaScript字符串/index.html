@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+</head>
+<body>
+    <div class="question1">
+        <label for="filename">请输入一个完整的文件名</label>
+        <input id="filename" type="text">
+        <button onclick="getExt()">获取后缀</button>
+        <span id="filenameext"></span>
+    </div>
+    <div class="question2">
+        <label for="sentence">请输入一串英语语句</label>
+        <input id="sentence" type="text">
+        <button onclick="toUpper()">首字母大写</button>
+        <span id="toUpperCase"></span>
+    </div>
+</body>
+<script>
+    function getExt() {
+        let index = document.getElementById("filename").value.lastIndexOf(".");
+        document.getElementById("filenameext").innerText = document.getElementById("filename").value.slice(index+1);
+    }
+
+    function toUpper() {
+        let ans = "";
+        let cnt = document.getElementById("sentence").value;
+        let words = cnt.split(' ');
+        words.forEach(function (item) {
+            let t = item[0].toUpperCase();
+            let nword = t + item.slice(1);
+            ans = ans + nword +" ";
+        });
+        document.getElementById("toUpperCase").innerText = ans;
+    }
+</script>
+</html>
