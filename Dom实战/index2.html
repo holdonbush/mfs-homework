@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            height: 50px;
+            line-height: 50px;
+            overflow: hidden;
+        }
+
+        header span:nth-child(1) {
+            float: left;
+            color: #7E8173;
+            font-size: 18px;
+            margin-left: 40px;
+        }
+
+        header span:nth-child(2) {
+            float: right;
+            font-size: 16px;
+            width: 70px;
+            margin-right: 60px;
+            text-align: center;
+            color: white;
+            background-color: #4CD8E0;
+        }
+
+        #title {
+            background-image: url("banner.jpg");
+            height: 270px;
+            display: flex;
+            flex-flow: column wrap;
+            align-content: center;
+            justify-content: center;
+        }
+
+        #title p:nth-child(1) {
+            font-size: 46px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+        }
+
+        #title p:nth-child(2) {
+            font-size: 28px;
+            margin-top: 20px;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+        }
+
+        .content {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+        }
+
+        .content .left {
+            width: 960px;
+            display: flex;
+            flex-flow: column wrap;
+            justify-content: space-around;
+        }
+
+        .content .left .lefttitle {
+            font-size: 22px;
+            padding: 14px;
+        }
+
+        .content .left .lefttitle #leftitleTitle{
+
+        }
+
+        .content .left .models {
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .content .left .models .model {
+            width: 296px;
+            height: 150px;
+            position: relative;
+            padding: 0 10px;
+            margin-bottom: 40px;
+        }
+
+        .content .left .models .model .canvascon {
+            width: 296px;
+            height: 100px;
+            background-color: #4CD8E0
+        }
+
+        .content .left .models .model span {
+            position: absolute;
+            font-size: 32px;
+            left: 15px;
+        }
+
+        .content .left .models .model p {
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #00474c;
+            color: white;
+        }
+        .content .left .lefttitle {
+            display: flex;
+            justify-content: center;
+            height: 30px;
+        }
+        .content .leftbottom {
+            display: flex;
+            flex-flow: row wrap;
+            justify-content: center;
+            height: 30px;
+            line-height: 30px;
+        }
+        .content .leftbottom span{
+            display: block;
+            width: 30px;
+            text-align: center;
+            align-self: center;
+            margin: 20px 0;
+            cursor: pointer;
+        }
+        .active{
+            background-color: #ff5955;
+            color: white;
+            border-radius: 5px;
+        }
+        canvas {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <span>码蜂社 · 作业闯关</span>
+    <span>登入</span>
+</header>
+<div id="title">
+    <p>一分耕耘 一分收获</p>
+    <p>NO PAINS NO GAINS</p>
+</div>
+<div class="content">
+    <div class="left">
+        <div class="lefttitle">
+            <p id="leftitleTitle">首页|</p>
+        </div>
+        <div class="models">
+        </div>
+        <div class="leftbottom">
+            <span class="page active">1</span>
+            <span class="page">2</span>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    addmodel(1);
+
+    function drawmodel(canvas) {
+        var ctx = canvas.getContext("2d");
+        ctx.beginPath();
+        ctx.arc(148, 50, 25, 0, 2 * Math.PI, true);
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(138, 45, 2, 0, 2 * Math.PI, true);
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(158, 45, 2, 0, 2 * Math.PI, true);
+        ctx.fillStyle = "black";
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(136, 60);
+        ctx.lineTo(160, 60);
+        ctx.strokeStyle = "black";
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.arc(20, 20, 30, 0, 2 * Math.PI, true);
+        ctx.fillStyle = "#20B6D2";
+        ctx.fill();
+    }
+
+    var pages = document.getElementsByClassName("page");
+    for (var i = 0; i < pages.length; i++) {
+        pages[i].addEventListener("click",function () {
+            changePageNum(this,parseInt(this.innerText));
+        })
+    }
+
+    function changePageNum(t,index) {
+        document.getElementsByClassName("active")[0].classList.remove("active");
+        t.classList.add("active");
+        document.getElementsByClassName("models")[0].innerHTML = "";
+        addmodel(index);
+    }
+
+    function addmodel(index) {
+        for (var i = (index-1)*12+1; i <= index*12; i++) {
+            console.log("111");
+            let lefttitle = document.createElement("div");
+            let lefttitlesp = document.createElement("span");
+            let canvast = document.createElement("canvas");
+            let coursediv = document.createElement("div");
+            let coursep = document.createElement("p");
+            let model = document.createElement("div");
+
+            canvast.width=296;
+            canvast.height = 100;
+            model.classList.add("model");
+            coursep.innerText = "课程"+i;
+            coursediv.appendChild(coursep);
+            lefttitle.classList.add("canvascon");
+            lefttitlesp.innerText = i;
+            lefttitle.appendChild(canvast);
+            drawmodel(canvast);
+            model.appendChild(lefttitlesp);
+            model.appendChild(lefttitle);
+            model.appendChild(coursediv)
+            document.getElementsByClassName("models")[0].appendChild(model);
+        }
+    }
+</script>
+</html>

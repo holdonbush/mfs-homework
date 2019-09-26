@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+</head>
+<body>
+    <div>
+        <div id="award">点击“开始“按钮，开始抽奖！</div>
+        <div class="action">
+            <button id="start">开 始</button>
+            <button id="stop">停 止</button>
+        </div>
+    </div>
+</body>
+<script>
+    var interval;
+    document.getElementById("stop").setAttribute("disabled",true);
+    document.getElementById("stop").onclick = function () {
+        document.getElementById("stop").setAttribute("disabled",true);
+        document.getElementById("start").removeAttribute("disabled");
+        clearInterval(interval);
+    };
+    document.getElementById("start").onclick = function () {
+        document.getElementById("start").setAttribute("disabled",true);
+        document.getElementById("stop").removeAttribute("disabled");
+        interval = setInterval(function () {
+            round();
+        },50)
+    };
+
+    function round() {
+        let temp = Math.floor(Math.random()*100);
+        console.log(temp);
+        if (temp === 0) {
+            document.getElementById("award").innerText = "特等奖";
+        } else if (temp <= 10) {
+            document.getElementById("award").innerText = "一等奖";
+        } else if (temp <= 40) {
+            document.getElementById("award").innerText = "二等奖";
+        } else if (temp <= 80) {
+            document.getElementById("award").innerText = "三等奖";
+        } else {
+            document.getElementById("award").innerText = "鼓励奖";
+        }
+    }
+</script>
+</html>

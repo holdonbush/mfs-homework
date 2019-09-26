@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .goods{
+            display: flex;
+            flex-flow: row wrap;
+            width: 900px;
+        }
+
+        .piece{
+            border: 1px solid #959595;
+            width: 290px;
+            padding: 5px;
+            margin: 10px;
+        }
+
+        .piece .name{
+            padding: 0 20px;
+        }
+
+        .piece .price{
+            display: flex;
+            justify-content: flex-end;
+            text-align: center;
+            height: 30px;
+            line-height: 30px;
+            padding: 20px;
+        }
+        .piece .price span:nth-child(1),span:nth-child(3){
+            width: 30px;
+            background-color: #f4645f;
+            border-radius: 15px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .shoppingcart{
+            display: flex;
+            flex-flow: column wrap;
+            width: 300px;
+        }
+        .shoppingcart .mygoods {
+            display: flex;
+            flex-flow: column wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="goods">
+            <!--<div class="piece">
+                <p class="name">商品1</p>
+                <div class="price">
+                    <span>+</span>
+                    <span>18元</span>
+                    <span>-</span>
+                </div>
+            </div>-->
+        </div>
+        <div class="shoppingcart">
+            <p>我的购物车</p>
+            <div class="mygoods"></div>
+        </div>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        let cookie = getAllCookies()
+        renderFromCookie(cookie)
+    }
+    function addmodel(t,goods,shoppingcar,number) {
+        let name = document.createElement("p");
+        let addnum = document.createElement("span");
+        let pricenum = document.createElement("span");
+        let disnum = document.createElement("span");
+        let price = document.createElement("div");
+        let piece = document.createElement("div");
+
+        addnum.innerText = "+";
+        if (shoppingcar !== null) {
+            pricenum.innerText = number.toString();
+        } else {
+            pricenum.innerText = "18元";
+        }
+        disnum.innerText = "-";
+        price.appendChild(addnum);
+        price.appendChild(pricenum);
+        price.appendChild(disnum);
+        name.innerText = "商品"+t;
+        piece.appendChild(name);
+        piece.appendChild(price);
+        piece.classList.add("piece");
+        name.classList.add("name");
+        price.classList.add("price");
+        addnum.onclick = addToShoppingcar;
+        disnum.onclick = subToShoppingcar;
+        if (shoppingcar !== null) {
+            piece.id = shoppingcar+t.toString();
+        } else {
+            piece.id = t.toString();
+        }
+        goods.appendChild(piece);
+    }
+
+    var goods = document.getElementsByClassName("goods")[0];
+    var shopcar = document.getElementsByClassName("mygoods")[0];
+
+    for (var i = 1; i <= 10; i++) {
+        addmodel(i,goods,null,1);
+    }
+
+    function addToShoppingcar() {
+        let id = this.parentElement.parentElement.id;
+        if (id.toString().slice(0,7) === "mygoods") {
+            id = parseInt(id.toString().slice(7))
+        }
+        let x = getCookie("buy"+id.toString());
+        let num;
+        try {
+            num = parseInt(x[0][1]);
+        } catch (e) {
+            num = 0;
+        }
+        document.cookie = "buy"+id.toString()+"="+(++num).toString();
+        if (document.getElementById("mygoods"+id)!==null){
+            let amount = document.querySelector("#mygoods"+id.toString()+" .price span:nth-child(2)");
+            let num1 = parseInt(amount.innerText);
+            num1++;
+            amount.innerText = num1.toString();
+            return
+        }
+        addmodel(id,shopcar,"mygoods",1);
+    }
+    function subToShoppingcar() {
+        let id = this.parentElement.parentElement.id;
+        if (id.toString().slice(0,7) === "mygoods") {
+            id = parseInt(id.toString().slice(7))
+        }
+        let x = getCookie("buy"+id.toString());
+        let num;
+        try {
+            num = parseInt(x[0][1]);
+        } catch (e) {
+            num = 0;
+        }
+        if (num > 1) {
+            document.cookie = "buy"+id.toString()+"="+(--num).toString();
+        } else {
+            console.log("remove");
+            document.cookie = "buy"+id.toString()+"=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+        }
+        if (document.getElementById("mygoods"+id)!==null){
+            let amount = document.querySelector("#mygoods"+id.toString()+" .price span:nth-child(2)");
+            let num1 = parseInt(amount.innerText);
+            if (num1 === 1) {
+                document.getElementsByClassName("mygoods")[0].removeChild(document.getElementById("mygoods"+id));
+                return
+            }
+            num1--;
+            amount.innerText = num1.toString();
+            return
+        }
+    }
+    
+    function getCookie(key) {
+        var x = document.cookie.split("; ").map(function (i) {
+            return i.split("=")
+        }).filter(function (i) {
+            return i[0] === key;
+        });
+        return x;
+    }
+    function getAllCookies() {
+        var y = document.cookie.split("; ").map(function (i) {
+            return i.split("=")
+        }).filter(function (i) {
+            return i[0].slice(0,3)==="buy";
+        });
+        return y;
+    }
+    function renderFromCookie(x) {
+        for (let i = 0; i < x.length; i++) {
+            let id = parseInt(x[i][0].slice(3));
+            addmodel(id,shopcar,"mygoods",parseInt(x[i][1]));
+        }
+    }
+</script>
+</html>

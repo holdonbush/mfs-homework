@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .labs {
+            display: flex;
+            width: 500px;
+            height: 50px;
+            line-height: 50px;
+        }
+        .labs .tab {
+            width: 250px;
+            cursor: pointer;
+            background-color: rgb(0,188,212);
+        }
+        .labs .tab p {
+            text-align: center;
+        }
+        .active{
+            display: block;
+        }
+        .content p{
+            width: 500px;
+            height: 100px;
+            margin: 0;
+            background-color: #959595;
+        }
+    </style>
+</head>
+<body>
+    <div class="labs">
+        <div class="tab"><p>tab1</p></div>
+        <div class="tab"><p>tab2</p></div>
+    </div>
+    <div style="width: 500px;display: flex;flex-direction: row;flex-wrap: nowrap;overflow: hidden">
+        <div class="content tab1 active" style="order:1">
+            <p>tab1's content</p>
+        </div>
+        <div class="content tab2" style="order:2">
+            <p>tab2's content</p>
+        </div>
+    </div>
+</body>
+<script>
+
+    var tabs = document.getElementsByClassName("tab");
+    for (var i = 0; i < tabs.length; i++) {
+        (function(i) {
+            tabs[i].onclick = function () {
+
+                var tabcnti = document.querySelector(".tab"+(i+1).toString());
+                var active = document.querySelector(".active");
+                console.log(i+1,parseInt(active.style.order))
+                if (tabcnti.classList.contains("active")) {
+                    return
+                }
+                if ((i+1)>parseInt(active.style.order)) {
+                    active = document.querySelector(".active");
+                    active.style.transform = "translate(-500px,0)";
+                    active.style.transition = "all .5s linear";
+                    active.classList.remove("active");
+                    //document.querySelector(".active").style = "";
+                    tabcnti.classList.add("active");
+                    active = document.querySelector(".active");
+                    active.style.transform = "translate(-500px,0)";
+                    active.style.transition = "all .5s linear";
+                } else if((i+1)<parseInt(active.style.order)){
+                    active = document.querySelector(".active");
+                    active.style.transform = "translate(0px,0)";
+                    active.style.transition = "all .5s linear";
+                    active.classList.remove("active");
+                    //document.querySelector(".active").style = "";
+                    tabcnti.classList.add("active");
+                    active = document.querySelector(".active");
+                    active.style.transform = "translate(0px,0)";
+                    active.style.transition = "all .5s linear";
+                }
+
+            }
+        })(i)
+    }
+</script>
+</html>

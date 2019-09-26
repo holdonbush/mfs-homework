@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+</head>
+<body>
+    <div>
+        <form id="signup" action="#" target="_blank" onsubmit="return onSignupFormSubmit()">
+            <p id="signup-error" style="color:red"></p>
+            <p>
+                用户名:
+                <input id="username" type="text" name="username">
+            </p>
+            <p>
+                口令:
+                <input type="password" id="password" name="password">
+            </p>
+            <p>
+                重复口令:
+                <input type="password" id="password-2">
+            </p>
+            <p>
+                <button type="submit">提交</button>
+                <button type="reset">重置</button>
+            </p>
+        </form>
+    </div>
+</body>
+<script>
+    function onSignupFormSubmit() {
+        var ousername = document.getElementById("username");
+        var opassword = document.getElementById("password");
+        var opassword2 = document.getElementById("password-2");
+        var osignuperr = document.getElementById("signup-error");
+
+        var usernameexp = new RegExp("^[A-Z|a-z][A-Za-z0-9\_]{5,15}$");
+        var passwordexp = new RegExp("^[A-Za-z0-9\x21-\x7e\?\=]{8,20}$");
+
+        var username = ousername.value;
+        var passwrod = opassword.value;
+        var passwrod2 = opassword2.value;
+
+        if (!usernameexp.test(username)) {
+            if (username.length < 6 || username.length > 16) {
+                osignuperr.innerText = "用户名长度不正确";
+            } else {
+                osignuperr.innerText = "用户名格式不正确";
+            }
+            return false
+        }
+        if (!passwordexp.test(passwrod)) {
+            if (passwrod.length < 8 || passwrod.length > 20) {
+                osignuperr.innerText = "口令长度不正确";
+            } else {
+                osignuperr.innerText = "口令格式不正确";
+            }
+            return false
+        }
+        if (passwrod !== passwrod2) {
+            osignuperr.innerText = "两次输入口令不一致";
+            return false
+        }
+
+        return true
+    }
+</script>
+</html>
