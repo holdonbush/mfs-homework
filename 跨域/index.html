@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+</head>
+<body>
+    <div>
+        <p>跨域</p>
+        <iframe src="http://www.b.com/index2.html"></iframe>
+    </div>
+</body>
+<script>
+    document.domain = "b.com";
+    setTimeout(function () {
+        console.log(window.frames[0].document.getElementById("canvas"))
+    },1000)
+</script>
+</html>

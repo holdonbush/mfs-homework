@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>码蜂社前端例子</title>
+</head>
+<body>
+    <div>
+        <canvas id="canvas" width="300" height="300"></canvas>
+    </div>
+</body>
+<script>
+    document.domain = "b.com";
+    console.log(document.domain);
+    var canvas = document.getElementById("canvas");
+    if (canvas.getContext) {
+        var ctx = canvas.getContext("2d");
+        var d = new Date();
+        var hours = d.getHours();
+        var minutes = d.getMinutes();
+        var seconds = d.getSeconds();
+        var time = [hours,minutes,seconds];
+        drawBackground(ctx);
+        time = drawHours(ctx,time);
+        time = drawMinutes(ctx,time);
+        time = drawSeconds(ctx,time);
+        window.setInterval(function () {
+            ctx.clearRect(0,0,ctx.width,ctx.height);
+            drawBackground(ctx);
+            time = drawHours(ctx,time);
+            time = drawMinutes(ctx,time);
+            time = drawSeconds(ctx,time);
+        },1000)
+    }
+
+
+    function drawBackground(ctx) {
+        ctx.beginPath();
+        ctx.arc(150,150,100,0,Math.PI*2,true);
+        ctx.fillStyle = "blue";
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(150,150,95,0,Math.PI*2,true);
+        ctx.fillStyle="white";
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.save();
+        ctx.translate(150,150);
+        for (var i = 0;i < 12; i++) {
+            //ctx.rotate(30*Math.PI/180);
+            ctx.beginPath();
+            ctx.lineWidth = 2;
+            ctx.lineCap="round";
+            ctx.moveTo(0,-90);
+            ctx.lineTo(0,-80);
+            ctx.strokeStyle = "black";
+            ctx.closePath();
+            ctx.stroke();
+            for (var j = 0; j < 4; j++) {
+                ctx.rotate(6*Math.PI/180);
+                ctx.beginPath();
+                ctx.moveTo(0,-90);
+                ctx.lineTo(0,-85);
+                ctx.strokeStyle = "black";
+                ctx.closePath();
+                ctx.stroke();
+            }
+            ctx.rotate(6*Math.PI/180);
+        }
+        ctx.restore();
+    }
+
+    function drawHours(ctx,time) {
+        ctx.save();
+        ctx.translate(150,150);
+        ctx.rotate(time[0]*30*Math.PI/180+time[1]/60*30*Math.PI/180+time[2]/60*6/5*Math.PI/180);
+        ctx.beginPath();
+        ctx.lineWidth=4;
+        ctx.lineCap = "round";
+        ctx.moveTo(0,10);
+        ctx.lineTo(0,-40);
+        ctx.strokeStyle = "black";
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+
+        return time;
+    }
+
+    function drawMinutes(ctx,time) {
+        ctx.save();
+        ctx.translate(150,150);
+        ctx.rotate(time[1]*6*Math.PI/180+time[2]/60*5*Math.PI/180);
+        ctx.beginPath();
+        ctx.lineWidth=3;
+        ctx.lineCap = "round";
+        ctx.moveTo(0,10);
+        ctx.lineTo(0,-80);
+        ctx.strokeStyle = "black";
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+
+        return time
+    }
+
+    function drawSeconds(ctx,time) {
+        ctx.save();
+        ctx.translate(150,150);
+        ctx.rotate(time[2]*6*Math.PI/180);
+        ctx.beginPath();
+        ctx.lineWidth=2;
+        ctx.lineCap = "round";
+        ctx.moveTo(0,10);
+        ctx.lineTo(0,-65);
+        ctx.strokeStyle = "red";
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+
+        ctx.beginPath();
+        ctx.arc(150,150,4,0,2*Math.PI,true);
+        ctx.strokeStyle = "red";
+        ctx.lineWidth = 3;
+        ctx.closePath();
+        ctx.stroke();
+
+        ctx.save();
+        ctx.translate(150,150);
+        ctx.rotate(time[2]*6*Math.PI/180);
+        ctx.beginPath();
+        ctx.lineWidth=2;
+        ctx.lineCap = "round";
+        ctx.arc(0,-70,5,0,2*Math.PI,true);
+        ctx.strokeStyle = "red";
+        ctx.closePath();
+        ctx.stroke();
+        ctx.restore();
+
+        time[2]+=1;
+        if (time[2] >= 60) {
+            time[1] += 1;
+            time[2] %= 60;
+        }
+        if (time[1] >= 60) {
+            time[0] += 1;
+            time[1] %= 60;
+        }
+        time[0] %= 12;
+        return time;
+    }
+</script>
+</html>
